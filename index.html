@@ -23,13 +23,9 @@
     --accent: #cf865a;
     --accent-hover: #b8724a;
     --accent-dim: rgba(207,134,90,0.12);
-    --accent-glow: rgba(207,134,90,0.06);
-    --gold: #c9a84c;
-    --gold-dim: rgba(201,168,76,0.15);
     --border: #e8e2d8;
     --border-light: #ede8e0;
     --shadow: 0 2px 12px rgba(0,0,0,0.05);
-    --shadow-hover: 0 4px 20px rgba(0,0,0,0.08);
     --radius: 12px;
     --font-display: 'Newsreader', Georgia, serif;
     --font-body: 'Outfit', -apple-system, sans-serif;
@@ -43,82 +39,98 @@ body {
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     padding-bottom: env(safe-area-inset-bottom);
+    overflow-x: hidden;
 }
 
-/* ── Hero ── */
+/* ── Video Hero ── */
 .hero {
-    text-align: center;
-    padding: 3rem 1.8rem 2rem;
     position: relative;
-    background: var(--bg-card);
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1.8rem;
+    overflow: hidden;
 }
 
-.hero::after {
-    content: '';
+.hero-video {
     position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        linear-gradient(180deg,
+            rgba(10,8,6,0.3) 0%,
+            rgba(10,8,6,0.15) 30%,
+            rgba(10,8,6,0.15) 60%,
+            rgba(10,8,6,0.5) 100%
+        );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-restaurant {
     font-family: var(--font-body);
     font-size: 0.6rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: rgba(255,255,255,0.7);
     margin-bottom: 1.4rem;
 }
 
 .hero h1 {
     font-family: var(--font-display);
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 500;
     letter-spacing: -0.03em;
     line-height: 1.05;
-    margin-bottom: 0.7rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
 .hero h1 span {
     display: block;
     font-style: italic;
     color: var(--accent);
+    text-shadow: 0 2px 20px rgba(207,134,90,0.3);
 }
 
 .hero .subtitle {
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 400;
     font-style: italic;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.85);
     line-height: 1.5;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 
-.divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 1.2rem 0;
-}
-
-.divider-line {
-    width: 40px;
-    height: 1px;
-    background: var(--border);
-}
-
-.divider-dot {
-    width: 5px;
-    height: 5px;
-    background: var(--accent);
-    border-radius: 50%;
+.hero-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(transparent, var(--bg));
+    z-index: 3;
 }
 
 /* ── Info Cards ── */
 .info-section {
-    padding: 1.4rem 1.5rem;
+    padding: 1rem 1.5rem 1.4rem;
 }
 
 .info-grid {
@@ -136,9 +148,7 @@ body {
     box-shadow: var(--shadow);
 }
 
-.info-card.full {
-    grid-column: 1 / -1;
-}
+.info-card.full { grid-column: 1 / -1; }
 
 .info-card .label {
     font-size: 0.58rem;
@@ -165,34 +175,36 @@ body {
 /* ── Deal ── */
 .deal {
     margin: 0 1.5rem;
-    background: linear-gradient(135deg, var(--accent), #d4956a);
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
     border-radius: var(--radius);
-    padding: 1.5rem 1.2rem;
+    padding: 1.4rem 1.2rem;
     text-align: center;
-    color: white;
-    box-shadow: 0 4px 20px rgba(207,134,90,0.25);
     position: relative;
-    overflow: hidden;
 }
 
-.deal::before {
+.deal::before,
+.deal::after {
     content: '';
     position: absolute;
-    top: -30px; right: -30px;
-    width: 100px; height: 100px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 50%;
+    left: 50%; transform: translateX(-50%);
+    width: 70%;
+    height: 1px;
+    border-top: 1px dashed var(--border);
 }
+.deal::before { top: -1px; }
+.deal::after { bottom: -1px; }
 
 .deal .amount {
     font-family: var(--font-display);
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 600;
+    color: var(--accent);
     line-height: 1;
 }
 
 .deal .amount small {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
 }
 
@@ -201,15 +213,15 @@ body {
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.8;
-    margin: 0.3rem 0 0.8rem;
+    color: var(--text-muted);
+    margin: 0.3rem 0 0.7rem;
 }
 
 .deal .deal-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 400;
+    color: var(--text-secondary);
     line-height: 1.6;
-    opacity: 0.95;
 }
 
 /* ── Steaks ── */
@@ -296,10 +308,7 @@ body {
     line-height: 1.5;
 }
 
-.upgrade strong {
-    color: var(--accent);
-    font-weight: 600;
-}
+.upgrade strong { color: var(--accent); font-weight: 600; }
 
 /* ── Actions ── */
 .actions {
@@ -371,10 +380,7 @@ body {
     line-height: 1.7;
 }
 
-.footer-address a {
-    color: var(--text-muted);
-    text-decoration: none;
-}
+.footer-address a { color: var(--text-muted); text-decoration: none; }
 
 /* ── Animations ── */
 @keyframes fadeUp {
@@ -382,11 +388,16 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.hero { animation: fadeUp 0.7s ease-out; }
-.info-section { animation: fadeUp 0.7s ease-out 0.08s both; }
-.deal { animation: fadeUp 0.7s ease-out 0.16s both; }
-.steak-list { animation: fadeUp 0.7s ease-out 0.24s both; }
-.actions { animation: fadeUp 0.7s ease-out 0.32s both; }
+@keyframes heroReveal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-content { animation: heroReveal 1.2s ease-out 0.3s both; }
+.info-section { animation: fadeUp 0.7s ease-out 0.2s both; }
+.deal { animation: fadeUp 0.7s ease-out 0.3s both; }
+.steak-list { animation: fadeUp 0.7s ease-out 0.4s both; }
+.actions { animation: fadeUp 0.7s ease-out 0.5s both; }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -398,23 +409,23 @@ body {
 </head>
 <body>
 
+<!-- Video Hero -->
 <section class="hero">
-    <div class="hero-restaurant">Le Petit Royal · Frankfurt</div>
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="hero-bg.webm" type="video/webm">
+        <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-fade"></div>
 
-    <h1>Master<span>bestanden.</span></h1>
-
-    <p class="subtitle">
-        Jungs — ich hab den Lappen.<br>
-        Das wird gefeiert.
-    </p>
-
-    <div class="divider">
-        <span class="divider-line"></span>
-        <span class="divider-dot"></span>
-        <span class="divider-line"></span>
+    <div class="hero-content">
+        <div class="hero-restaurant">Le Petit Royal · Frankfurt</div>
+        <h1>Master<span>am Stizzle.</span></h1>
+        <p class="subtitle">Darauf heb ich einen mit euch.</p>
     </div>
 </section>
 
+<!-- Info -->
 <section class="info-section">
     <div class="info-grid">
         <div class="info-card">
@@ -425,7 +436,7 @@ body {
         <div class="info-card">
             <div class="label">Uhrzeit</div>
             <div class="value">20:00</div>
-            <div class="detail">Reservation ab 20 Uhr</div>
+            <div class="detail">Tisch ist reserviert</div>
         </div>
         <div class="info-card full">
             <div class="label">Location</div>
@@ -434,11 +445,12 @@ body {
         </div>
         <div class="info-card full" style="background: var(--bg-warm);">
             <div class="label">Dresscode</div>
-            <div class="detail" style="font-size: 0.82rem; color: var(--text-secondary);">Smart Casual — sieht gehoben aus da drin</div>
+            <div class="detail" style="font-size: 0.82rem; color: var(--text-secondary);">Smart Casual</div>
         </div>
     </div>
 </section>
 
+<!-- Deal -->
 <div class="deal">
     <div class="amount">70<small>€</small></div>
     <div class="deal-label">Pro Kopf</div>
@@ -448,14 +460,15 @@ body {
     </div>
 </div>
 
-<div class="section-label">Steak-Empfehlungen vom Grill</div>
+<!-- Steaks -->
+<div class="section-label">Meine Picks von der Karte</div>
 
 <div class="steak-list">
     <div class="steak-card featured">
         <div class="steak-info">
             <div class="steak-name">Entrecôte USA</div>
             <div class="steak-desc">Black Angus · Creekstone, Kansas · 300g</div>
-            <div class="steak-tag">Empfehlung</div>
+            <div class="steak-tag">Mein Pick</div>
         </div>
         <div class="steak-price">€64</div>
     </div>
@@ -505,6 +518,7 @@ body {
     Jedes Steak als <strong>„Surf & Turf"</strong> mit ganzem kanadischen Hummer (~500g) — <strong>+€65</strong>
 </div>
 
+<!-- Actions -->
 <section class="actions">
     <a href="https://www.google.com/maps/place/Le+Petit+Royal+Frankfurt,+Neckarstra%C3%9Fe+13,+60329+Frankfurt+am+Main" target="_blank" class="btn btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
