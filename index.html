@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta property="og:title" content="Master bestanden — Dinner Einladung">
+<meta property="og:description" content="Le Petit Royal Frankfurt · Samstag, 21. März 2026 · ab 20 Uhr">
+<title>Master bestanden — Einladung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg: #faf8f5;
+    --bg-card: #ffffff;
+    --bg-warm: #fff8f3;
+    --text: #1a1a1a;
+    --text-secondary: #5a5650;
+    --text-muted: #9a9490;
+    --accent: #cf865a;
+    --accent-hover: #b8724a;
+    --accent-dim: rgba(207,134,90,0.12);
+    --gold: #8a7235;
+    --green: #2d8a3e;
+    --green-bg: rgba(45,138,62,0.1);
+    --border: #e8e4de;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+    --radius: 14px;
+    --font: 'Outfit', -apple-system, sans-serif;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ── Hero ── */
+.hero {
+    text-align: center;
+    padding: 2.8rem 1.5rem 2rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero .subtitle {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ── Info Grid ── */
+.info-section {
+    padding: 1.5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+}
+
+.info-card.full {
+    grid-column: 1 / -1;
+}
+
+.info-card .label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.info-card .value {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.info-card .detail {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.15rem;
+}
+
+/* ── Deal Banner ── */
+.deal-banner {
+    background: linear-gradient(135deg, var(--accent), #e0965a);
+    color: white;
+    border-radius: var(--radius);
+    padding: 1.4rem 1.2rem;
+    margin: 0 1.5rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(207,134,90,0.25);
+}
+
+.deal-banner .amount {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+}
+
+.deal-banner .amount small {
+    font-size: 1.4rem;
+    font-weight: 500;
+    vertical-align: super;
+}
+
+.deal-banner .deal-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 0.6rem;
+}
+
+.deal-banner .deal-text {
+    font-size: 0.82rem;
+    font-weight: 400;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* ── Section Labels ── */
+.section-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 1.5rem 1.5rem 0.8rem;
+}
+
+/* ── Steak Cards ── */
+.steak-list {
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.steak-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8rem;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.steak-card.featured {
+    border-color: var(--accent);
+    border-width: 2px;
+    background: var(--bg-warm);
+}
+
+.steak-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.steak-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.steak-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.15rem;
+    line-height: 1.4;
+}
+
+.steak-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.badge {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 6px;
+}
+
+.badge-accent {
+    background: var(--accent-dim);
+    color: var(--accent);
+}
+
+.badge-green {
+    background: var(--green-bg);
+    color: var(--green);
+}
+
+.badge-muted {
+    background: #f0ede8;
+    color: var(--text-muted);
+}
+
+.steak-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 0.1rem;
+}
+
+/* ── Upgrade Hint ── */
+.upgrade-hint {
+    margin: 0.8rem 1.5rem 0;
+    padding: 0.8rem 1rem;
+    background: var(--bg-warm);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.upgrade-hint strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ── Action Buttons ── */
+.actions {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    padding: 0 1.5rem;
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(207,134,90,0.3);
+}
+.btn-primary:hover { background: var(--accent-hover); }
+
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    padding: 1rem 1.5rem 2.5rem;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+}
+
+.footer .restaurant-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+
+.footer .address {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.footer .address a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero { animation: fadeUp 0.6s ease-out; }
+.info-section { animation: fadeUp 0.6s ease-out 0.1s both; }
+.deal-banner { animation: fadeUp 0.6s ease-out 0.2s both; }
+.steak-list { animation: fadeUp 0.6s ease-out 0.3s both; }
+.actions { animation: fadeUp 0.6s ease-out 0.4s both; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-eyebrow">Einladung zum Dinner</div>
+    <h1>Master<br><span>bestanden.</span></h1>
+    <p class="subtitle">Jungs, ich hab's geschafft — und das<br>wird jetzt standesgemäß gefeiert.</p>
+</section>
+
+<!-- Info Grid -->
+<section class="info-section">
+    <div class="info-grid">
+        <div class="info-card">
+            <div class="label">Wann</div>
+            <div class="value">Samstag</div>
+            <div class="detail">21. März 2026</div>
+        </div>
+        <div class="info-card">
+            <div class="label">Uhrzeit</div>
+            <div class="value">20:00</div>
+            <div class="detail">Reservation ab 20 Uhr</div>
+        </div>
+        <div class="info-card full">
+            <div class="label">Location</div>
+            <div class="value">Le Petit Royal</div>
+            <div class="detail">Neckarstraße 13 · Frankfurt am Main</div>
+        </div>
+        <div class="info-card full" style="background: var(--bg-warm);">
+            <div class="label">Dresscode</div>
+            <div class="value" style="font-size: 0.88rem;">Smart Casual — sieht gehoben aus da drin</div>
+        </div>
+    </div>
+</section>
+
+<!-- Deal Banner -->
+<div class="deal-banner">
+    <div class="amount">70<small>€</small></div>
+    <div class="deal-label">Pro Person · Von mir</div>
+    <div class="deal-text">Ich übernehme 70 € pro Kopf.<br>Was drüber geht, zahlt jeder selbst.</div>
+</div>
+
+<!-- Steak Picks -->
+<div class="section-label">Steak-Empfehlungen vom Grill</div>
+
+<div class="steak-list">
+    <div class="steak-card featured">
+        <div class="steak-info">
+            <div class="steak-name">Entrecôte USA</div>
+            <div class="steak-desc">Black Angus · Creekstone, Kansas · 300g</div>
+            <div class="steak-meta">
+                <span class="badge badge-accent">Empfehlung</span>
+                <span class="badge badge-green">im Budget</span>
+            </div>
+        </div>
+        <div class="steak-price">€64</div>
+    </div>
+
+    <div class="steak-card">
+        <div class="steak-info">
+            <div class="steak-name">Roastbeef Deutschland</div>
+            <div class="steak-desc">Simmentaler Rind · 4 Wo. dry-aged · 250g</div>
+            <div class="steak-meta">
+                <span class="badge badge-muted">Klassiker</span>
+                <span class="badge badge-green">im Budget</span>
+            </div>
+        </div>
+        <div class="steak-price">€34</div>
+    </div>
+
+    <div class="steak-card">
+        <div class="steak-info">
+            <div class="steak-name">Rinderfilet</div>
+            <div class="steak-desc">Deutsches Angus · Vogelsberg · 200g</div>
+            <div class="steak-meta">
+                <span class="badge badge-accent">Zart &amp; Premium</span>
+                <span class="badge badge-green">im Budget</span>
+            </div>
+        </div>
+        <div class="steak-price">€42</div>
+    </div>
+
+    <div class="steak-card">
+        <div class="steak-info">
+            <div class="steak-name">Wagyu Inside Skirt</div>
+            <div class="steak-desc">Jack's Creek, Australien · MS 6–9 · 250g</div>
+            <div class="steak-meta">
+                <span class="badge badge-accent">Wagyu-Deal</span>
+                <span class="badge badge-green">im Budget</span>
+            </div>
+        </div>
+        <div class="steak-price">€34</div>
+    </div>
+
+    <div class="steak-card">
+        <div class="steak-info">
+            <div class="steak-name">GOP Gold Label Sirloin</div>
+            <div class="steak-desc">6 Wo. dry-aged · Grasfütterung · 250g</div>
+            <div class="steak-meta">
+                <span class="badge badge-muted">Dry-Aged</span>
+                <span class="badge badge-green">im Budget</span>
+            </div>
+        </div>
+        <div class="steak-price">€64</div>
+    </div>
+
+    <div class="steak-card">
+        <div class="steak-info">
+            <div class="steak-name">Le Steak Trio</div>
+            <div class="steak-desc">Filet + Sirloin + Entrecôte · Trüffel-Pommes</div>
+            <div class="steak-meta">
+                <span class="badge badge-accent">Für Hungrige</span>
+                <span class="badge badge-muted">+€19 Eigenanteil</span>
+            </div>
+        </div>
+        <div class="steak-price">€89</div>
+    </div>
+</div>
+
+<!-- Upgrade Hint -->
+<div class="upgrade-hint">
+    Jedes Steak als <strong>„Surf & Turf"</strong> mit ganzem kanadischen Hummer (~500g) — <strong>+€65</strong>
+</div>
+
+<!-- Actions -->
+<section class="actions">
+    <a href="https://www.google.com/maps/place/Le+Petit+Royal+Frankfurt,+Neckarstra%C3%9Fe+13,+60329+Frankfurt+am+Main" target="_blank" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Route zum Restaurant
+    </a>
+    <a href="https://www.lepetitroyal-frankfurt.de/" target="_blank" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Komplette Speisekarte
+    </a>
+    <a href="tel:+496975666251" class="btn btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Restaurant anrufen
+    </a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="restaurant-name">Le Petit Royal Frankfurt</div>
+    <div class="address">
+        Neckarstraße 13 · 60329 Frankfurt<br>
+        <a href="tel:+496975666251">+49 69 75 666 251</a> · <a href="https://www.lepetitroyal-frankfurt.de">lepetitroyal-frankfurt.de</a>
+    </div>
+</footer>
+
+</body>
+</html>
